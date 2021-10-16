@@ -16,12 +16,11 @@ const app = express()
 
 app.use(helmet());
 app.use(express.json())
+app.use(cors());
 if (process.env.NODE_ENV === 'development') {
     //app.use(cors());
     app.use(morgan('dev'))
 }
-
-app.use(cors());
 
 app.use('/api/products', require('./routes/productRoute'));
 app.use('/api/users', require('./routes/userRoutes'));
