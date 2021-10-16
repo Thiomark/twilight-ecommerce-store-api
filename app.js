@@ -17,14 +17,11 @@ const app = express()
 app.use(helmet());
 app.use(express.json())
 if (process.env.NODE_ENV === 'development') {
-    app.use(cors());
+    //app.use(cors());
     app.use(morgan('dev'))
-}else{
-    var corsOptions = {
-        origin: 'https://flamboyant-shockley-baec9d.netlify.app/'
-    }
-    app.use(cors(corsOptions));
 }
+
+app.use(cors());
 
 app.use('/api/products', require('./routes/productRoute'));
 app.use('/api/users', require('./routes/userRoutes'));
